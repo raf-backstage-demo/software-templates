@@ -1,70 +1,55 @@
-apiVersion: 1.0.0
+schemaVersion: 2.1.0
 metadata:
-  generateName: ${{values.artifact_id}}
+  name: ${{values.artifact_id}}
 attributes:
-  persistVolumes: "false"
-projects:
-  - name: ${{values.artifact_id}}
-    source:
-      type: git
-      location: "https://github.com/raf-backstage-demo/${{values.artifact_id}}.git"
+  controller.devfile.io/storage-type: ephemeral
 components:
-  - id: redhat/quarkus-java11/latest
-    type: chePlugin
-  - mountSources: true
-    endpoints:
-      - name: quarkus-development-server
-        port: 8080
-      - attributes:
-          public: 'false'
-        name: debug
-        port: 5005
-      - attributes:
-          public: 'false'
-        name: tests
-        port: 8081
-    memoryLimit: 512Mi
-    type: dockerimage
-    volumes:
-      - name: m2
-        containerPath: /home/jboss/.m2
-    alias: maven
-    image: 'registry.redhat.io/codeready-workspaces/plugin-java11-rhel8@sha256:cff9e47f83c6140d442721ed4d78e029a55f98bdca8efffbba8513656a1b28a7'
-    env:
-      - value: '-XX:MaxRAMPercentage=50.0 -XX:+UseParallelGC -XX:MinHeapFreeRatio=10 -XX:MaxHeapFreeRatio=20 -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xms20m -Djava.security.egd=file:/dev/./urandom -Duser.home=/home/jboss'
-        name: JAVA_OPTS
-      - value: $(JAVA_OPTS)
-        name: MAVEN_OPTS
-  - id: redhat/java/latest
-    type: chePlugin
-  - id: redhat/vscode-xml/latest
-    type: chePlugin
+  - name: development-tools
+    container:
+      image: quay.io/devspaces/udi-rhel8:latest
+      env:
+        - name: QUARKUS_HTTP_HOST
+          value: 0.0.0.0
+        - name: MAVEN_OPTS
+          value: "-Dmaven.repo.local=/home/user/.m2/repository" 
+      memoryLimit: 5Gi
+      cpuLimit: 2500m
+      volumeMounts:
+        - name: m2
+          path: /home/user/.m2
+      endpoints:
+        - name: quarkus-development-server
+          targetPort: 8080
+          exposure: public
+          secure: false
+          protocol: http
+        - name: debug
+          targetPort: 5005
+          exposure: none
+          secure: false
+          protocol: tcp
+        - name: tests
+          targetPort: 8081
+          exposure: none
+          secure: false
+          protocol: tcp
+  - name: m2
+    volume:
+      size: 1G
 commands:
-  - name: 1. Package the application
-    actions:
-      - workdir: '${CHE_PROJECTS_ROOT}/${{values.artifact_id}}'
-        type: exec
-        command: mvn package
-        component: maven
-  - name: 2. Start Quarkus in devmode (hot deploy + debug)
-    actions:
-      - workdir: '${CHE_PROJECTS_ROOT}/${{values.artifact_id}}'
-        type: exec
-        command: 'mvn compile quarkus:dev -Dquarkus.http.host=0.0.0.0 -Dquarkus.live-reload.instrumentation=false'
-        component: maven
-  - name: Attach remote debugger
-    actions:
-      - referenceContent: |
-          {
-            "version": "0.2.0",
-            "configurations": [
-              {
-                "type": "java",
-                "request": "attach",
-                "name": "Attach to Remote Quarkus App",
-                "hostName": "localhost",
-                "port": 5005
-              }
-            ]
-          }
-        type: vscode-launch
+  - id: package
+    exec:
+      label: "1. Package the application"
+      component: development-tooling
+      commandLine: "./mvnw package"
+      group:
+        kind: build
+        isDefault: true
+  - id: start-dev
+    exec:
+      label: "2. Start Development mode (Hot reload + debug)"
+      component: development-tooling
+      commandLine: "./mvnw compile quarkus:dev"
+      group:
+        kind: run
+        isDefault: true
