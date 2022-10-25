@@ -7,14 +7,14 @@ metadata:
     - java
     - quarkus
   links:
-    - url: https://eclipse-che.apps.control-cluster-raffa.demo.red-chesterfield.com/#https://github.com/raf-backstage-demo/${{values.artifact_id}}?devfilePath=.devfilev2-theia.yaml
-      title: CodeReady Workspaces (Eclipse Theia)
+    - url: https://devspaces.apps.control-cluster-raffa.demo.red-chesterfield.com/#https://github.com/raf-backstage-demo/${{values.artifact_id}}?che-editor=eclipse/che-theia/latest
+      title: OpenShift Dev Spaces (Eclipse Theia)
       icon: web
-    - url: https://eclipse-che.apps.control-cluster-raffa.demo.red-chesterfield.com/#https://github.com/raf-backstage-demo/${{values.artifact_id}}?che-editor=che-incubator/che-code/insiders&devfilePath=.devfilev2-vscode.yaml
-      title: CodeReady Workspaces (VS Code)
+    - url: https://devspaces.apps.control-cluster-raffa.demo.red-chesterfield.com/#https://github.com/raf-backstage-demo/${{values.artifact_id}}?che-editor=https://eclipse-che.github.io/che-plugin-registry/main/v3/plugins/che-incubator/che-code/insiders/devfile.yaml
+      title: OpenShift Dev Spaces (VS Code)
       icon: web    
-    - url: https://eclipse-che.apps.control-cluster-raffa.demo.red-chesterfield.com/#https://github.com/raf-backstage-demo/${{values.artifact_id}}?che-editor=che-incubator/che-idea/next&devfilePath=.devfilev2-intellij.yaml
-      title: CodeReady Workspaces (JetBrains IntelliJ)
+    - url: https://devspaces.apps.control-cluster-raffa.demo.red-chesterfield.com/#https://github.com/raf-backstage-demo/${{values.artifact_id}}?che-editor=che-incubator/che-idea/latest
+      title: OpenShift Dev Spaces (JetBrains IntelliJ)
       icon: web
     - url: https://grafana-route-user-workload-grafana.apps.control-cluster-raffa.demo.red-chesterfield.com/d/AqEG4weWk/error-budget?orgId=1&refresh=5s&var-virtual_service=${{values.artifact_id}}.${{values.application.split(":")[1]}}-prod.svc.cluster.local&var-time_interval=1h&var-SLO=95&var-latency=1000
       title: SRE Metrics (production)
