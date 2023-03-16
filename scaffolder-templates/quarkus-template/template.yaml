@@ -93,7 +93,7 @@ spec:
         repoVisibility: public
         deleteBranchOnMerge: true
         access: raf-backstage-demo/${{ parameters.owner }}
-        baseURL: control-cluster-raffa.demo.red-chesterfield.com
+        baseURL: cluster1.mcp.pitagora.at
         protectDefaultBranch: false        
 
     - id: register
@@ -119,7 +119,7 @@ spec:
           http_port: 8080
           application: ${{ parameters.application }}
           organization: raf-backstage-demo
-          baseURL: control-cluster-raffa.demo.red-chesterfield.com
+          baseURL: cluster1.mcp.pitagora.at
           team: ${{ parameters.owner }}
           repo_id: ${{ parameters.component_id }}
         targetPath: ./tenant-gitops          

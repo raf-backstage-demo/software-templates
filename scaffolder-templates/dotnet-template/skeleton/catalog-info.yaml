@@ -7,7 +7,7 @@ metadata:
     - java
     - dotnet
   links:
-    - url: https://grafana-route-user-workload-grafana.apps.control-cluster-raffa.demo.red-chesterfield.com/d/AqEG4weWk/error-budget?orgId=1&refresh=5s&var-virtual_service=${{values.artifact_id}}.${{values.application.split(":")[1]}}-prod.svc.cluster.local&var-time_interval=1h&var-SLO=95&var-latency=1000
+    - url: https://grafana-route-user-workload-grafana.apps.cluster1.mcp.pitagora.at/d/AqEG4weWk/error-budget?orgId=1&refresh=5s&var-virtual_service=${{values.artifact_id}}.${{values.application.split(":")[1]}}-prod.svc.cluster.local&var-time_interval=1h&var-SLO=95&var-latency=1000
       title: SRE Metrics (production)
       icon: web
   annotations:
