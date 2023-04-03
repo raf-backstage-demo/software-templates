@@ -10,6 +10,5 @@ metadata:
     build-namespace: ${{values.application_id}}-build
     size: ${{values.size}}
     environment: ${{environment}}
-    goldilocks.fairwinds.com/enabled: "true"
-    argocd.argoproj.io/managed-by: ${{values.application_id}}-build
+#    goldilocks.fairwinds.com/enabled: "true"
 {% endfor %}
