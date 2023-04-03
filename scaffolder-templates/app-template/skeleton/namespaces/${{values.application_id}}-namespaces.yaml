@@ -1,14 +1,14 @@
 {% for environment in values.environments.split(",") %}
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: suxess-it-${{environment}}
-  labels:
-    app : ${{values.application_id}}
-    team: ${{values.owner}}
-    build-namespace: ${{values.application_id}}-build
-    size: ${{values.size}}
-    environment: ${{environment}}
+#---
+#apiVersion: v1
+#kind: Namespace
+#metadata:
+#  name: suxess-it-${{environment}}
+#  labels:
+#    app : ${{values.application_id}}
+#    team: ${{values.owner}}
+#    build-namespace: ${{values.application_id}}-build
+#    size: ${{values.size}}
+#    environment: ${{environment}}
 #    goldilocks.fairwinds.com/enabled: "true"
 {% endfor %}
