@@ -63,7 +63,7 @@ spec:
             allowedHosts:
               - github.com
             allowedOwners:
-              - raf-backstage-demo  
+              - phac008  
 
   steps:
     - id: template
