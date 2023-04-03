@@ -44,7 +44,7 @@ spec:
           title: Environments
           type: string
           description: Environments needed by this application
-          enum: ["sx-bs-build,sx-bs-dev,sx-bs-qa,sx-bs-prod"]
+          enum: ["suxess-it-dev,suxess-id-qa,suxess-it-prod"]
 
   steps:
     - id: template-namespaces 
