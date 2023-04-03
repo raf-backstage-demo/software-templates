@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: ${{values.application_id}}-root-application
-  namespace: ${{values.application_id}}-build
+  namespace: suxess-it-admin
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
@@ -14,7 +14,7 @@ spec:
       include: "*.yaml"
   destination:
     server: https://kubernetes.default.svc
-    namespace: ${{values.application_id}}-build
+    namespace: suxess-it-dev
   syncPolicy:
     automated: 
       prune: true
