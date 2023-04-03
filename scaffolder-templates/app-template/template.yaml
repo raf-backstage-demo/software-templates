@@ -64,7 +64,7 @@ spec:
       name: make a pr with the new namespaces
       action: publish:github:pull-request
       input:
-        repoUrl: github.com?repo=approved-namespaces&owner=raf-backstage-demo
+        repoUrl: github.com?repo=approved-namespaces&owner=phac008
         branchName: ${{ parameters.application_id }}
         title: namespaces for ${{ parameters.application_id }}
         description: namespaces for ${{ parameters.application_id }}
@@ -85,7 +85,7 @@ spec:
       input:
         allowedHosts: ['github.com']
         description: This is ${{ parameters.application_id }}
-        repoUrl: github.com?repo=${{ parameters.application_id }}-gitops&owner=raf-backstage-demo
+        repoUrl: github.com?repo=${{ parameters.application_id }}-gitops&owner=phac008
         repoVisibility: public
         sourcePath: ./app-gitops
         deleteBranchOnMerge: true
