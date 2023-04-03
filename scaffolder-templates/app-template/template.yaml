@@ -89,5 +89,5 @@ spec:
         repoVisibility: public
         sourcePath: ./app-gitops
         deleteBranchOnMerge: true
-        access: phac008/${{ parameters.owner }}
+        #access: phac008/${{ parameters.owner }}
         protectDefaultBranch: false
