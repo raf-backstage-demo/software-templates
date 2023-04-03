@@ -3,7 +3,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: ${{values.application_id}}-${{environment}}
+  name: suxess-it-${{environment}}
   labels:
     app : ${{values.application_id}}
     team: ${{values.owner}}
