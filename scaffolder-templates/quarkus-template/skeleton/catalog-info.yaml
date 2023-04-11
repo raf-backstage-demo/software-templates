@@ -17,12 +17,9 @@ metadata:
       title: SRE Metrics (production)
       icon: web
   annotations:
-    'github.com/project-slug': raf-backstage-demo/${{values.artifact_id}}
+    'github.com/project-slug': phac008/${{values.artifact_id}}
     'backstage.io/kubernetes-id': ${{values.artifact_id}}
     'backstage.io/techdocs-ref': dir:.
-    'sonarqube.org/project-key': raf-backstage-demo_${{values.artifact_id}}
-    'prometheus.io/alert': ErrorBudgetBurn-critical-${{values.application.split(":")[1]}}-prod-${{values.artifact_id}},ErrorBudgetBurn-warning-${{values.application.split(":")[1]}}-prod-${{values.artifact_id}}
-    'prometheus.io/rule': virtual_service:${{values.application.split(":")[1]}}_prod_${{values.artifact_id}}:error_rate_1d,virtual_service:${{values.application.split(":")[1]}}_prod_${{values.artifact_id}}:error_rate_1h,virtual_service:${{values.application.split(":")[1]}}_prod_${{values.artifact_id}}:error_rate_2h,virtual_service:${{values.application.split(":")[1]}}_prod_${{values.artifact_id}}:error_rate_30m
 spec:
   type: service
   lifecycle: experimental
