@@ -2,13 +2,13 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: ${{ values.component_id }}-prod
-  namespace: ${{values.application.split(":")[1]}}-build
+  namespace: suxess-it-admin
   finalizers:
     - resources-finalizer.argocd.argoproj.io  
 spec:
   project: default
   source:
-    repoURL: https://github.com/raf-backstage-demo/${{values.application.split(":")[1]}}-gitops
+    repoURL: https://github.com/phac008/${{values.application.split(":")[1]}}-gitops
     targetRevision: HEAD
     path: ./components/${{ values.component_id }}/chart
     helm:
@@ -21,7 +21,7 @@ spec:
           baseDomain: ${{values.baseURL}}  
   destination:
     server: https://kubernetes.default.svc
-    namespace: ${{values.application.split(":")[1]}}-prod
+    namespace: suxess-it-dev
   syncPolicy:
     automated: 
       prune: true
