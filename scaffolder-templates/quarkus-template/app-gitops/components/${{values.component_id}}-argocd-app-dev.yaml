@@ -3,7 +3,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: ${{ values.component_id }}-dev
-  namespace: ${{values.application.split(":")[1]}}-build
+  namespace: suxess-it-admin
   finalizers:
     - resources-finalizer.argocd.argoproj.io  
 spec:
@@ -22,7 +22,7 @@ spec:
           baseDomain: ${{values.baseURL}}  
   destination:
     server: https://kubernetes.default.svc
-    namespace: ${{values.application.split(":")[1]}}-dev
+    namespace: suxess-it-dev
   syncPolicy:
     automated: 
       prune: true
