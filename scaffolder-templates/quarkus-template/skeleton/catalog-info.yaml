@@ -7,10 +7,10 @@ metadata:
     - java
     - quarkus
   links:
-    - url: https://devspaces.apps.cluster1.mcp.pitagora.at/#https://github.com/raf-backstage-demo/${{values.artifact_id}}?che-editor=che-incubator/che-code/insiders&devfilePath=.devfilev2-vscode.yaml
+    - url: https://devspaces.apps.cluster1.mcp.pitagora.at/#https://github.com/phac008/${{values.artifact_id}}?che-editor=che-incubator/che-code/insiders&devfilePath=.devfilev2-vscode.yaml
       title: CodeReady Workspaces (VS Code)
       icon: web    
-    - url: https://devspaces.apps.cluster1.mcp.pitagora.at/#https://github.com/raf-backstage-demo/${{values.artifact_id}}?che-editor=che-incubator/che-idea/next&devfilePath=.devfilev2-intellij.yaml
+    - url: https://devspaces.apps.cluster1.mcp.pitagora.at/#https://github.com/phac008/${{values.artifact_id}}?che-editor=che-incubator/che-idea/next&devfilePath=.devfilev2-intellij.yaml
       title: CodeReady Workspaces (JetBrains IntelliJ)
       icon: web
     - url: https://grafana-route-user-workload-grafana.apps.cluster1.mcp.pitagora.at/d/AqEG4weWk/error-budget?orgId=1&refresh=5s&var-virtual_service=${{values.artifact_id}}-stable.${{values.application.split(":")[1]}}-prod.svc.cluster.local&var-time_interval=1h&var-SLO=95&var-latency=1000

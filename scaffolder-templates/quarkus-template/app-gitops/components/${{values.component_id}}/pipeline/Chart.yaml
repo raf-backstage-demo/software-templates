@@ -26,4 +26,4 @@ appVersion: "1.16.0"
 dependencies:
   - name: quarkus-pipeline
     version: "0.1.16"
-    repository: https://raf-backstage-demo.github.io/shared-workflows
+    repository: https://github.com/phac008/shared-workflows

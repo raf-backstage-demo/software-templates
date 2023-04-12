@@ -92,7 +92,7 @@ spec:
         repoUrl: ${{ parameters.repoUrl }}
         repoVisibility: public
         deleteBranchOnMerge: true
-        #access: raf-backstage-demo/${{ parameters.owner }}
+        #access: phac008/${{ parameters.owner }}
         #baseURL: cluster1.mcp.pitagora.at
         protectDefaultBranch: false        
 
