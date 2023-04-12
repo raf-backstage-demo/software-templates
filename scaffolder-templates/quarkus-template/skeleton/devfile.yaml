@@ -7,7 +7,7 @@ projects:
   - name: ${{values.artifact_id}}
     source:
       type: git
-      location: "https://github.com/raf-backstage-demo/${{values.artifact_id}}.git"
+      location: "https://github.com/phac008/${{values.artifact_id}}.git"
 components:
   - id: redhat/quarkus-java11/latest
     type: chePlugin
