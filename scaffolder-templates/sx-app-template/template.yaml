@@ -71,7 +71,7 @@ spec:
           owner: ${{ parameters.owner }}
           environments: ${{ parameters.environments }}
 
-    - id: pull-request
+    - id: pull-request-namespacesetup
       name: make a pr with the new namespaces
       action: publish:github:pull-request
       input:
@@ -90,7 +90,7 @@ spec:
         values: {}
         targetPath: ./app-gitops
 
-    - id: publish
+    - id: publish-gitopsreposetup
       name: Publish
       action: publish:github
       input:
@@ -103,7 +103,7 @@ spec:
         #access: phac008/${{ parameters.owner }}
         protectDefaultBranch: false
 
-    - id: template-gitopssetup 
+    - id: template-gitopsreposetup 
       name: Fetch gitopssetup Skeleton + Template
       action: fetch:template
       input:
@@ -115,7 +115,7 @@ spec:
           owner: ${{ parameters.owner }}
           environments: ${{ parameters.environments }}
    
-    - id: pull-request
+    - id: pull-request-gitopsreposetup
       name: make a pr with the new gitopsapps
       action: publish:github:pull-request
       input:
