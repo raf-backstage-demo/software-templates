@@ -1,0 +1,22 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: "${{values.application_id}}"
+  description: "${{values.application_id}}"
+  tags:
+    - java
+    - dotnet
+  links:
+    - url: https://grafana-route-user-workload-grafana.apps.cluster1.mcp.pitagora.at/d/AqEG4weWk/error-budget?orgId=1&refresh=5s&var-virtual_service=${{values.artifact_id}}.${{values.application.split(":")[1]}}-prod.svc.cluster.local&var-time_interval=1h&var-SLO=95&var-latency=1000
+      title: SRE Metrics (production)
+      icon: web
+  annotations:
+    github.com/project-slug: phac008/${{values.application_id}}
+    'backstage.io/kubernetes-id': ${{values.application_id}}
+    'backstage.io/kubernetes-label-selector': 'app.kubernetes.io/name=${{values.application_id}}'
+    'backstage.io/techdocs-ref': dir:.
+spec:
+  type: service
+  lifecycle: experimental
+  owner: "demo-team-a"
+  system: system:${{values.application_id.split(":")[1]}}

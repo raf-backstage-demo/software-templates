@@ -50,7 +50,6 @@ spec:
               - prod
               - dev
               - qa
-              - prod,dev,qa
           uniqueItems: true
           ui:widget: checkboxes
         replicas:
@@ -61,7 +60,7 @@ spec:
 
   steps:
     - id: template-namespacesetup
-      name: Fetch Skeleton + Template
+      name: Fetch namespacesetup Skeleton + Template
       action: fetch:template
       input:
         url: ./skeleton/namespacesetup
@@ -105,7 +104,7 @@ spec:
         protectDefaultBranch: false
 
     - id: template-gitopssetup 
-      name: Fetch Skeleton + Template
+      name: Fetch gitopssetup Skeleton + Template
       action: fetch:template
       input:
         url: ./skeleton/gitopsreposetup
