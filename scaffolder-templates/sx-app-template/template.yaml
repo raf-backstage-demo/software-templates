@@ -37,7 +37,8 @@ spec:
               - Group
         dockerimage:
           title: Dockerimage Location
-          type: string                      
+          type: string       
+          default: 'https://dockerhub.com/image'               
         environments:
           title: Environments
           type: array
@@ -57,11 +58,11 @@ spec:
           
 
   steps:
-    - id: template-namespaces 
+    - id: template-namespacesetup
       name: Fetch Skeleton + Template
       action: fetch:template
       input:
-        url: ./skeleton
+        url: ./skeleton/namespacesetup
         copyWithoutRender: []
         values:
           application_id: ${{ parameters.application_id }}
@@ -100,3 +101,24 @@ spec:
         deleteBranchOnMerge: true
         #access: phac008/${{ parameters.owner }}
         protectDefaultBranch: false
+
+    - id: template-gitopssetup 
+      name: Fetch Skeleton + Template
+      action: fetch:template
+      input:
+        url: ./skeleton/gitopsreposetup
+        copyWithoutRender: []
+        values:
+          application_id: ${{ parameters.application_id }}
+          description: ${{ parameters.description }}
+          owner: ${{ parameters.owner }}
+          environments: ${{ parameters.environments }}
+   
+    - id: pull-request
+      name: make a pr with the new gitopsapps
+      action: publish:github:pull-request
+      input:
+        repoUrl: github.com?repo=${{ parameters.application_id }}-gitops&owner=phac008
+        branchName: ${{ parameters.application_id }}
+        title: gitopsapps for ${{ parameters.application_id }}
+        description: gitopsapps for ${{ parameters.application_id }}
