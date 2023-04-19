@@ -69,7 +69,7 @@ spec:
           application_id: ${{ parameters.application_id }}
           description: ${{ parameters.description }}
           owner: ${{ parameters.owner }}
-          environments: ${{ parameters.environments }}
+          environments: ${{ json parameters.environments }}
 
     - id: pull-request-namespacesetup
       name: make a pr to approved-namespaces repo with additional namespacesetup
