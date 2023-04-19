@@ -19,4 +19,4 @@ spec:
   type: service
   lifecycle: experimental
   owner: "demo-team-a"
-  system: system:${{values.application_id.split(":")[1]}}
+  system: system:${{values.application_id}}
