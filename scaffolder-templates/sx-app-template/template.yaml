@@ -115,14 +115,14 @@ spec:
           owner: ${{ parameters.owner }}
           environments: ${{ parameters.environments }}
    
-    - id: pull-request-gitopsreposetup
-      name: make a pr with the new gitopsapps
-      action: publish:github:pull-request
-      input:
-        repoUrl: github.com?repo=${{ parameters.application_id }}-gitops&owner=phac008
-        branchName: master
-        title: gitopsapps for ${{ parameters.application_id }}
-        description: gitopsapps for ${{ parameters.application_id }}
+#    - id: pull-request-gitopsreposetup
+ #     name: make a pr with the new gitopsapps
+  #    action: publish:github:pull-request
+   #   input:
+    #    repoUrl: github.com?repo=${{ parameters.application_id }}-gitops&owner=phac008
+     #   branchName: master
+      #  title: gitopsapps for ${{ parameters.application_id }}
+       # description: gitopsapps for ${{ parameters.application_id }}
 
     - id: register
       name: Register
