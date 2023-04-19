@@ -40,10 +40,10 @@ spec:
           type: string                      
         environments:
           title: Environments
-          type: string
+          type: array
           description: Environments needed by this application
           items:
-            type: array
+            type: string
             enum: 
               - prod
               - dev
