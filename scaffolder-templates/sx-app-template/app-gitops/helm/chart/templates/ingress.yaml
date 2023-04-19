@@ -5,7 +5,7 @@ metadata:
   namespace: suxess-it-${{values.environments}}
 spec:
   rules:
-  - host: ${{values.application_id}}-suxess-it-{{values.environments}}.apps.cluster1.mcp.pitagora.at
+  - host: ${{values.application_id}}-suxess-it-${{values.environments}}.apps.cluster1.mcp.pitagora.at
     http:
       paths:
       - backend:
