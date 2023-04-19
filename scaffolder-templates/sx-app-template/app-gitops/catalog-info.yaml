@@ -13,8 +13,9 @@ metadata:
   annotations:
     github.com/project-slug: phac008/${{values.application_id}}
     'backstage.io/kubernetes-id': ${{values.application_id}}
-    'backstage.io/kubernetes-label-selector': 'app.kubernetes.io/name=${{values.application_id}}'
+    'backstage.io/kubernetes-namespace': suxess-it-${{values.application_id}}
     'backstage.io/techdocs-ref': dir:.
+    'argocd/app-name:': ${{values.application_id}}
 spec:
   type: service
   lifecycle: experimental
