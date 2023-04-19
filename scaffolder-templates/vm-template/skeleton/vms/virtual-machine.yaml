@@ -1,2 +1,0 @@
-name: ${{values.resource_id}}
-namespace: ${{values.application_id}}
