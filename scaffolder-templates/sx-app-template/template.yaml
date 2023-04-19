@@ -17,7 +17,7 @@ spec:
         - owner
         - environments
         - description
-        - dockerimageUrl
+        - imageUrl
         - replicaCount
       properties:
         application_id:
@@ -36,7 +36,7 @@ spec:
           ui:options:
             allowedKinds: 
               - Group
-        dockerimageUrl:
+        imageUrl:
           title: Dockerimage Location
           type: string       
           default: 'quay.io/dummyimage'               
@@ -91,6 +91,7 @@ spec:
           description: ${{ parameters.description }}
           owner: ${{ parameters.owner }}
           environments: ${{ parameters.environments }}
+          imageUrl: ${{ parameters.imageUrl }}
         targetPath: ./app-gitops
 
     - id: publish-gitopsreposetup
