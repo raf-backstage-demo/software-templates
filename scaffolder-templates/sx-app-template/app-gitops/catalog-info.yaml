@@ -4,7 +4,8 @@ metadata:
   name: "${{values.application_id}}"
   description: "${{values.application_id}}"
   tags:
-    - sX
+    - sx
+    - template
   links:
     - url: https://graf-sx.apps.cluster1.mcp.pitagora.at/
       title: SRE Metrics (production)
