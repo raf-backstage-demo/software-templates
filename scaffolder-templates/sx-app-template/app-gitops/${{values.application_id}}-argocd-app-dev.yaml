@@ -11,7 +11,7 @@ spec:
   source:
     repoURL: https://github.com/phac008/${{values.application_id}}-gitops.git
     targetRevision: HEAD
-    path: .helm/chart
+    path: helm/chart
     helm:
       valueFiles:
         - ../value-files/values-${{values.environments}}.yaml
