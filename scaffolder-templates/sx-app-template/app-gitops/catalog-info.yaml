@@ -7,7 +7,7 @@ metadata:
     - sx
     - template
   links:
-    - url: https://graf-sx-grafana.apps.cluster1.mcp.pitagora.at
+    - url: https://graf-sx-grafana.apps.cluster1.mcp.pitagora.at/d/KRlE7mE4z/4-golden-signals-sx-cnp?orgId=1&var-namespace=suxess-it-dev&var-workload=All&var-service=${{values.application_id}}
       title: SRE Metrics (production)
       icon: web
   annotations:
