@@ -39,7 +39,7 @@ spec:
         dockerimageUrl:
           title: Dockerimage Location
           type: string       
-          default: 'https://dockerhub.com/image'               
+          default: 'quay.io/dummyimage'               
         environments:
           title: Environments
           type: array
@@ -72,7 +72,7 @@ spec:
           environments: ${{ parameters.environments }}
 
     - id: pull-request-namespacesetup
-      name: make a pr with the new namespaces
+      name: make a pr with the new namespacesetup
       action: publish:github:pull-request
       input:
         repoUrl: github.com?repo=approved-namespaces&owner=phac008
@@ -87,7 +87,11 @@ spec:
       input:
         url: ./app-gitops
         copyWithoutRender: []
-        values: {}
+        values:
+          application_id: ${{ parameters.application_id }}
+          description: ${{ parameters.description }}
+          owner: ${{ parameters.owner }}
+          environments: ${{ parameters.environments }}
         targetPath: ./app-gitops
 
     - id: publish-gitopsreposetup
@@ -100,7 +104,6 @@ spec:
         repoVisibility: public
         sourcePath: ./app-gitops
         deleteBranchOnMerge: true
-        #access: phac008/${{ parameters.owner }}
         protectDefaultBranch: false
 
     - id: template-gitopsreposetup 
