@@ -7,7 +7,7 @@ metadata:
     - sx
     - template
   links:
-    - url: https://graf-sx.apps.cluster1.mcp.pitagora.at/
+    - url: https://graf-sx-grafana.apps.cluster1.mcp.pitagora.at
       title: SRE Metrics (production)
       icon: web
   annotations:
@@ -18,5 +18,5 @@ metadata:
 spec:
   type: service
   lifecycle: experimental
-  owner: "demo-team-a"
+  owner: "guests"
   system: system:${{values.application_id}}
