@@ -1,4 +1,4 @@
-{% for environment in values.environments.split(",") %}
+#{% for environment in values.environments.split(",") %}
 ---
 apiVersion: backstage.io/v1alpha1
 kind: System
@@ -9,5 +9,4 @@ metadata:
     environments: ${{environment}}
 spec:
   owner: ${{values.owner}}
-
-{% endfor %}
+#{% endfor %}
