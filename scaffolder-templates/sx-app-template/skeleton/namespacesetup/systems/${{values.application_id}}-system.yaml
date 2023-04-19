@@ -6,9 +6,8 @@ metadata:
   name: ${{values.application_id}}
   description: ${{values.description}}
   labels:
-    size: ${{values.size}}
-    environments: ${{values.environments.replaceAll(',','-')}}
+    environments: ${{environment}}
 spec:
   owner: ${{values.owner}}
-  
+
 {% endfor %}
