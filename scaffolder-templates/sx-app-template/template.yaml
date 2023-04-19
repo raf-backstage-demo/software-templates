@@ -17,8 +17,8 @@ spec:
         - owner
         - environments
         - description
-        - dockerimage
-        - replicas
+        - dockerimageUrl
+        - replicaCount
       properties:
         application_id:
           title: Name
@@ -36,7 +36,7 @@ spec:
           ui:options:
             allowedKinds: 
               - Group
-        dockerimage:
+        dockerimageUrl:
           title: Dockerimage Location
           type: string       
           default: 'https://dockerhub.com/image'               
@@ -52,7 +52,7 @@ spec:
               - qa
           uniqueItems: true
           ui:widget: checkboxes
-        replicas:
+        replicaCount:
           title: Number of replicas for Pods
           type: string
           default: '1'

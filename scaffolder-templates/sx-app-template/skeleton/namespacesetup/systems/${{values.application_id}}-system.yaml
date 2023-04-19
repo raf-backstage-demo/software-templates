@@ -4,6 +4,6 @@ metadata:
   name: ${{values.application_id}}
   description: ${{values.description}}
   labels:
-    environments: ${{values.environment}}
+    environments: ${{values.environments}}
 spec:
   owner: ${{values.owner}}

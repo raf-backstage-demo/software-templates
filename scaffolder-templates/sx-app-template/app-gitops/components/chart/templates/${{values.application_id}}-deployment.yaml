@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ${{values.application_id}}
+  namespace: suxess-it-{{values.environments}}
+  labels:
+    app: ${{values.application_id}}
+spec:
+  replicas: ${{values.replicaCount}}
+  selector:
+    matchLabels:
+      app: ${{values.application_id}}
+  template:
+    metadata:
+      labels:
+        app: ${{values.application_id}}
+    spec:
+      containers:
+#      - image: quay.io/rbaumgar/monitor-demo-app-jvm
+      - image: ${{values.imageUrl}}
+        imagePullPolicy: Always
+        name: ${{values.application_id}}

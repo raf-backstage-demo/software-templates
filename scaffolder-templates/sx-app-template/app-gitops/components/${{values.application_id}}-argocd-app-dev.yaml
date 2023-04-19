@@ -2,26 +2,22 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: ${{ values.application_id }}-dev
+  name: ${{ values.application_id }}-${{values.environments}}
   namespace: suxess-it-admin
   finalizers:
     - resources-finalizer.argocd.argoproj.io  
 spec:
   project: default
   source:
-    repoURL: https://github.com/phac008/${{ values.application_id }}
+    repoURL: https://github.com/phac008/${{values.application_id}}-gitops.git
     targetRevision: HEAD
     path: .helm/chart
     helm:
       valueFiles:
-        - ../value-files/values-dev.yaml
-      values: |
-        dotnet-run: 
-          image:
-            tag: dummy
+        - ../value-files/values-${{values.environments}}.yaml
   destination:
     server: https://kubernetes.default.svc
-    namespace: suxess-it-dev
+    namespace: suxess-it-${{values.environments}}
   syncPolicy:
     automated: 
       prune: true
