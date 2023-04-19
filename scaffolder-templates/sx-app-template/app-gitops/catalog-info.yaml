@@ -13,7 +13,7 @@ metadata:
   annotations:
     github.com/project-slug: phac008/${{values.application_id}}-gitops
     backstage.io/kubernetes-id: ${{values.application_id}}
-    argocd/app-name: ${{values.application_id}}
+    argocd/app-name: ${{values.application_id}}-${{values.environments}}
     backstage.io/kubernetes-namespace: suxess-it-${{values.environments}}
     backstage.io/techdocs-ref: dir:.
 spec:

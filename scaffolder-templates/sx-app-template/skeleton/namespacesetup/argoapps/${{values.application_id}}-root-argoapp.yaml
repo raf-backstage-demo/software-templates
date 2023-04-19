@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: ${{values.application_id}}-root-application
+  name: ${{values.application_id}}-${{values.environments}}
   namespace: suxess-it-admin
   finalizers:
   - resources-finalizer.argocd.argoproj.io
