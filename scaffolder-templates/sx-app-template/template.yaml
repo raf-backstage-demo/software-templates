@@ -120,7 +120,7 @@ spec:
       action: publish:github:pull-request
       input:
         repoUrl: github.com?repo=${{ parameters.application_id }}-gitops&owner=phac008
-        branchName: ${{ parameters.application_id }}
+        branchName: master
         title: gitopsapps for ${{ parameters.application_id }}
         description: gitopsapps for ${{ parameters.application_id }}
 
