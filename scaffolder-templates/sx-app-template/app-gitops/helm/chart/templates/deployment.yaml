@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ${{values.application_id}}
-  namespace: suxess-it-{{values.environments}}
+  namespace: suxess-it-${{values.environments}}
   labels:
     app: ${{values.application_id}}
 spec:
