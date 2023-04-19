@@ -9,9 +9,11 @@ spec:
   project: default
   source:
     repoURL: https://github.com/phac008/${{values.application_id}}-gitops.git
-    path: components
-    directory:
-      include: "*.yaml"
+    targetRevision: HEAD
+    path: helm/chart
+    helm:
+      valueFiles:
+        - ../value-files/values-${{values.environments}}.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: suxess-it-${{values.environments}}
