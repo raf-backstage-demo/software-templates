@@ -16,7 +16,7 @@ spec:
       include: "*.yaml"
   destination:
     server: https://kubernetes.default.svc
-    namespace: suxess-it-${{environment}}
+    namespace: suxess-it-${{parameters.environment}}
   syncPolicy:
     automated: 
       prune: true
