@@ -43,7 +43,7 @@ spec:
           type: string
           description: Environments needed by this application
           items:
-            type: string
+            type: array
             enum: 
               - prod
               - dev
