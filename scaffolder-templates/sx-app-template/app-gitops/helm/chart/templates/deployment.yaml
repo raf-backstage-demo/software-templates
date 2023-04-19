@@ -5,6 +5,7 @@ metadata:
   namespace: suxess-it-${{values.environments}}
   labels:
     app: ${{values.application_id}}
+    backstage.io/kubernetes-id: ${{values.application_id}}
 spec:
   replicas: ${{values.replicaCount}}
   selector:
@@ -14,6 +15,7 @@ spec:
     metadata:
       labels:
         app: ${{values.application_id}}
+        backstage.io/kubernetes-id: ${{values.application_id}}
     spec:
       containers:
 #      - image: quay.io/rbaumgar/monitor-demo-app-jvm
