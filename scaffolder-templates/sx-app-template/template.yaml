@@ -92,6 +92,7 @@ spec:
           owner: ${{ parameters.owner }}
           environments: ${{ parameters.environments }}
           imageUrl: ${{ parameters.imageUrl }}
+          replicaCount: ${{ parameters.replicaCount }}
         targetPath: ./app-gitops
 
     - id: publish-gitopsreposetup
