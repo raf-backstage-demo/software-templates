@@ -21,3 +21,5 @@ spec:
   lifecycle: experimental
   owner: "guests"
   system: system:${{values.application_id}}
+  dependsOn:
+    - resource:argocd
