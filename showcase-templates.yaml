@@ -17,3 +17,4 @@ spec:
     - https://github.com/backstage/software-templates/blob/main/scaffolder-templates/react-ssr-template/template.yaml
     - https://github.com/backstage/software-templates/blob/main/scaffolder-templates/create-react-app/template.yaml
     - https://github.com/backstage/software-templates/blob/main/scaffolder-templates/clean-architecture-app/template.yaml
+    - https://github.com/phac008/rhsummit23-backstage-gpts/blob/main/workshop-templates.yaml
