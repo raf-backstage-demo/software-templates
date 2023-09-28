@@ -7,6 +7,7 @@ metadata:
     app: ${{values.application_id}}
     backstage.io/kubernetes-id: ${{values.application_id}}
 spec:
+  ingressClassName: openshift-default
   rules:
   - host: ${{values.application_id}}-suxess-it-${{values.environments}}.apps.cluster1.mcp.pitagora.at
     http:
