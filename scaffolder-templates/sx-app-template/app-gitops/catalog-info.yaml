@@ -7,7 +7,7 @@ metadata:
     - sx
     - template
   links:
-    - url: https://graf-sx-grafana.apps.cluster1.mcp.pitagora.at/d/KRlE7mE4z/4-golden-signals-sx-cnp?orgId=1&var-namespace=suxess-it-dev&var-workload=All&var-service=${{values.application_id}}
+    - url: https://grafana-route-suxess-it-grafana.apps.cluster1.mcp.pitagora.at/d/KRlE7mE4z/4-golden-signals-sx-cnp?orgId=1&refresh=5s&var-namespace=suxess-it-${{values.environments}}&var-workload=${{values.application_id}}&var-service=${{values.application_id}}
       title: Grafana SRE Metrics
       icon: web
   annotations:
@@ -17,6 +17,8 @@ metadata:
     argocd/app-name: ${{values.application_id}}-${{values.environments}}
     backstage.io/kubernetes-namespace: suxess-it-${{values.environments}}
     backstage.io/techdocs-ref: dir:.
+    grafana/dashboard-selector: "(tags @> '4GoldenSignals')"
+    grafana/overview-dashboard: "https://grafana-route-suxess-it-grafana.apps.cluster1.mcp.pitagora.at/d/KRlE7mE4z/4-golden-signals-sx-cnp?orgId=1&refresh=5s&var-namespace=suxess-it-${{values.environments}}&var-workload=${{values.application_id}}&var-service=${{values.application_id}}"
 spec:
   type: service
   lifecycle: experimental
