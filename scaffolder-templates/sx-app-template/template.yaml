@@ -7,7 +7,7 @@ metadata:
   tags:
     - application
 spec:
-  owner: phac@suxess-it.com
+  owner: philipp.achmueller
   type: system
   
   parameters:
@@ -36,6 +36,7 @@ spec:
           ui:options:
             allowedKinds: 
               - Group
+              - User
         imageUrl:
           title: Dockerimage Location
           type: string       
