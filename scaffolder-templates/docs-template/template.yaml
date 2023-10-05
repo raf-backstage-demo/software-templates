@@ -60,16 +60,18 @@ spec:
         values:
           name: ${{ parameters.name }}
           description: ${{ parameters.description }}
-          destination: ${{ parameters.repoUrl | parseRepoUrl }}
+          destination: ${{ (parameters.repoUrl | parseRepoUrl).owner }}/${{ (parameters.repoUrl | parseRepoUrl).repo }}
           owner: ${{ parameters.owner }}
 
     - id: publish
       name: Publish
       action: publish:github
       input:
-        allowedHosts: ["github.com"]
+        allowedHosts:
+          - github.com
         description: This is ${{ parameters.name }}
-        repoUrl: ${{ parameters.repoUrl | parseRepoUrl }}
+        repoUrl: ${{ parameters.repoUrl }}
+        repoVisibility: public
 
     - id: register
       name: Register
