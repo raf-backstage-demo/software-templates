@@ -11,9 +11,9 @@ spec:
 #    - https://github.com/phac008/software-templates/blob/main/scaffolder-templates/dotnet-template/template.yaml
 #    - https://github.com/phac008/software-templates/blob/main/scaffolder-templates/quarkus-template/template.yaml
 #    - https://github.com/phac008/software-templates/blob/main/scaffolder-templates/vm-template/template.yaml
+    - https://github.com/phac008/software-templates/blob/main/scaffolder-templates/docs-template/template.yaml
     - https://github.com/phac008/software-templates/blob/main/scaffolder-templates/sx-app-template/template.yaml
     - https://github.com/phac008/backstage-k8s-github-template/blob/main/template.yaml
-    - https://github.com/backstage/software-templates/blob/main/scaffolder-templates/docs-template/template.yaml
     - https://github.com/backstage/software-templates/blob/main/scaffolder-templates/react-ssr-template/template.yaml
     - https://github.com/backstage/software-templates/blob/main/scaffolder-templates/create-react-app/template.yaml
     - https://github.com/backstage/software-templates/blob/main/scaffolder-templates/clean-architecture-app/template.yaml
