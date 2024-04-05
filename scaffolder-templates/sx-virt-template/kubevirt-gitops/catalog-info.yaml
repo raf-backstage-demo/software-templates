@@ -1,0 +1,28 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: "${{values.application_id}}"
+  description: "${{values.application_id}}"
+  tags:
+    - sx
+    - template
+  links:
+    - url: https://grafana.apps.cluster1.mcp.pitagora.at/d/KRlE7mE4z/4-golden-signals-sx-cnp?orgId=1&refresh=5s&var-namespace=suxess-it-${{values.environments}}&var-workload=${{values.application_id}}&var-service=${{values.application_id}}
+      title: Grafana SRE Metrics
+      icon: web
+  annotations:
+    github.com/project-slug: phac008/${{values.application_id}}-gitops
+    backstage.io/kubernetes-id: ${{values.application_id}}
+    kubecost.com/deployment-name: ${{values.application_id}}
+    argocd/app-name: ${{values.application_id}}-${{values.environments}}
+    backstage.io/kubernetes-namespace: suxess-it-${{values.environments}}
+    backstage.io/techdocs-ref: dir:.
+    grafana/dashboard-selector: "(tags @> '4GoldenSignals')"
+    grafana/overview-dashboard: "https://grafana.apps.cluster1.mcp.pitagora.at/d/KRlE7mE4z/4-golden-signals-sx-cnp?orgId=1&refresh=5s&var-namespace=suxess-it-${{values.environments}}&var-workload=${{values.application_id}}&var-service=${{values.application_id}}"
+spec:
+  type: service
+  lifecycle: experimental
+  owner: "guests"
+  system: vm:${{values.application_id}}
+  dependsOn:
+    - resource:argocd

@@ -1,0 +1,140 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: sx-kubevirt-template
+  title: sX kubevirt Template
+  description: Run Demo VM in ArgoCD namespace
+  tags:
+    - virtualization
+spec:
+  owner: user:philipp.achmueller
+  type: system
+  
+  parameters:
+    - title: Provide information on this application
+      required:
+        - application_id
+        - owner
+        - environments
+        - description
+        - cores
+        - memory
+        - disk
+        - os
+      properties:
+        application_id:
+          title: Name
+          type: string
+          description: Unique name of this vm
+        description:
+          title: Description
+          type: string
+          description: Help others understand what this vm is for.
+        owner:
+          title: Owner
+          type: string
+          description: Owner of this vm
+          ui:field: OwnerPicker
+          ui:options:
+            allowedKinds: 
+              - Group
+              - User
+        cores:
+          title: Number of Cores
+          type: string       
+          default: '1'
+        memory:
+          title: Size of Memory
+          type: string       
+          default: '4'
+        environments:
+          title: Environments
+          type: array
+          description: Environments needed by this vm
+          items:
+            type: string
+            enum: 
+              - prod
+              - dev
+              - qa
+          uniqueItems: true
+          ui:widget: checkboxes
+        disk:
+          title: Storage size of VM
+          type: string
+          default: '20Gi'
+        os:
+          title: OS Type
+          type: string
+          description: Environments needed by this vm
+          default: rhel9-server-small
+            type: string
+            enum: 
+              - rhel9-server-small
+              - rhel9-server-medium
+              - rhel9-server-large
+  steps:
+    - id: template-namespacesetup
+      name: Fetch Namespacesetup Skeleton + Template
+      action: fetch:template
+      input:
+        url: ./skeleton/namespacesetup
+        copyWithoutRender: []
+        values:
+          application_id: ${{ parameters.application_id }}
+          description: ${{ parameters.description }}
+          owner: ${{ parameters.owner }}
+          environments: ${{ parameters.environments }}
+
+    - id: pull-request-namespacesetup
+      name: make a pr to approved-namespaces repo with additional namespacesetup
+      action: publish:github:pull-request
+      input:
+        repoUrl: github.com?repo=approved-namespaces&owner=phac008
+        branchName: ${{ parameters.application_id }}
+        title: argoapps and system config for ${{ parameters.application_id }}
+        description: argoapps and system config for ${{ parameters.application_id }}
+        
+    - id: template-gitops
+      name: Fetch Skeleton + Template
+      action: fetch:template
+      input:
+        url: ./kubevirt-gitops
+        copyWithoutRender: []
+        values:
+          application_id: ${{ parameters.application_id }}
+          description: ${{ parameters.description }}
+          owner: ${{ parameters.owner }}
+          environments: ${{ parameters.environments }}
+          cores: ${{ parameters.cores }}
+          memory: ${{ parameters.memory }}
+          os: ${{ parameters.os }}
+          disk: ${{ parameters.disk }}
+        targetPath: ./kubevirt-gitops
+
+    - id: publish-gitopsreposetup
+      name: Publish Template Gitops Repo
+      action: publish:github
+      input:
+        allowedHosts: ['github.com']
+        description: This is ${{ parameters.application_id }}
+        repoUrl: github.com?repo=${{ parameters.application_id }}-gitops&owner=phac008
+        repoVisibility: public
+        sourcePath: ./kubevirt-gitops
+        deleteBranchOnMerge: true
+        protectDefaultBranch: false
+
+    - id: register
+      name: Register
+      action: catalog:register
+      input:
+        repoContentsUrl: ${{ steps["publish-gitopsreposetup"].output.repoContentsUrl }}
+        catalogInfoPath: '/catalog-info.yaml'
+  
+  output:
+    links:
+      - title: Repository
+        url: ${{ steps["publish-gitopsreposetup"].output.remoteUrl }}
+      - title: Open in catalog
+        icon: catalog
+        entityRef: ${{ steps.register.output.entityRef }}
